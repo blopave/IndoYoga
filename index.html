@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IndoYoga — Ashtanga Yoga · Gualeguaychú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <p class="loader-text">Indo<em>Yoga</em></p>
+    <div class="loader-bar"></div>
+  </div>
+  <!-- GRAIN -->
+  <div class="grain"></div>
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">
+      <div class="nav-logo-placeholder">IY</div>
+      <span class="nav-logo-text">Indo<em>Yoga</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#clases">Clases<span class="nav-link-line"></span></a></li>
+      <li><a href="#formacion">Formación<span class="nav-link-line"></span></a></li>
+      <li><a href="#founder">Founder<span class="nav-link-line"></span></a></li>
+      <li><a href="#contacto">Contacto<span class="nav-link-line"></span></a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu"><a href="#clases" onclick="closeMenu()">Clases</a><a href="#formacion" onclick="closeMenu()">Formación</a><a href="#founder" onclick="closeMenu()">Founder</a><a href="#contacto" onclick="closeMenu()">Contacto</a></div>
+
+  <div id="smooth-wrapper"><div id="smooth-content">
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-mesh"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-content">
+      <h1 class="hero-title" id="heroTitle"></h1>
+      <div class="hero-line"></div>
+      <p class="hero-tagline">Ashtanga · Vinyasa · Mysore</p>
+      <p class="hero-subtitle">Escuela de Ashtanga Yoga fundada por Kike Fay. Clases grupales, práctica Mysore y formación de instructores con certificación internacional.</p>
+      <p class="hero-location">Belgrano 161 · Gualeguaychú · Entre Ríos</p>
+    </div>
+    <div class="hero-scroll"><span>Explorar</span><div class="scroll-line"></div></div>
+  </section>
+
+  <!-- WAVE: cream to ivory -->
+  <div class="section-wave section-wave-ivory"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z"/></svg></div>
+
+  <!-- CLASES -->
+  <section id="clases" class="section">
+    <div class="reveal"><p class="section-eyebrow">Práctica semanal</p><h2 class="section-title">Clases <em>Grupales</em></h2><p class="section-desc">Sesiones de 1 hora 15 minutos. Guiada/Flow, Ashtanga/Flow y Ashtanga Mysore con dos instructores, cuatro días a la semana.</p></div>
+    <div class="divider-animated reveal"></div>
+    <div class="clases-grid">
+      <div class="horarios-card reveal reveal-delay-1"><p class="card-label">Horarios — Febrero 2026</p><table><thead><tr><th>Hora</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th></tr></thead><tbody>
+        <tr class="table-row-reveal"><td>17:30</td><td><span class="style-tag">Guiada / Flow</span><span class="instructor-tag">Kike</span></td><td>—</td><td><span class="style-tag">Guiada / Flow</span><span class="instructor-tag">Kike</span></td><td>—</td></tr>
+        <tr class="table-row-reveal"><td>19:00</td><td>—</td><td><span class="style-tag">Ashtanga / Flow</span><span class="instructor-tag">Kike</span></td><td>—</td><td><span class="style-tag">Ashtanga / Flow</span><span class="instructor-tag">Kike</span></td></tr>
+        <tr class="table-row-reveal"><td>20:30</td><td><span class="style-tag">Ashtanga / Flow</span><span class="instructor-tag">Gerva</span></td><td><span class="style-tag">Ashtanga Mysore</span><span class="instructor-tag">Kike</span></td><td><span class="style-tag">Ashtanga / Flow</span><span class="instructor-tag">Gerva</span></td><td><span class="style-tag">Ashtanga Mysore</span><span class="instructor-tag">Kike</span></td></tr>
+      </tbody></table></div>
+      <div class="precios-card reveal reveal-delay-2"><p class="card-label">Valores mensuales</p>
+        <div class="precio-item"><div class="precio-label">Clase de prueba</div><div class="precio-value">$40.000</div></div>
+        <div class="precio-item"><div class="precio-label">1 vez por semana</div><div class="precio-value">$50.000</div></div>
+        <div class="precio-item"><div class="precio-label">2 veces por semana</div><div class="precio-value">$70.000</div></div>
+        <div class="precio-item"><div class="precio-label">3 veces por semana</div><div class="precio-value">$90.000</div></div>
+        <div class="precio-item"><div class="precio-label">Pase libre<small>+3 veces por semana</small></div><div class="precio-value">$100.000</div></div>
+        <p class="precio-note">La clase de prueba se descuenta del pago del mes. Se abona mes completo hasta el día 10. Las clases se recuperan dentro del mes con el mismo profesor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE INTERLUDE -->
+  <div class="section-wave section-wave-ink"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60 Z"/></svg></div>
+  <section class="quote-section">
+    <div class="reveal">
+      <p class="quote-mark">"</p>
+      <p class="quote-text">La verdadera sabiduría se adquiere con la fuerza personal de activar la firmeza y flexibilidad en cada objetivo de la vida.</p>
+      <p class="quote-author">Kike Fay</p>
+    </div>
+  </section>
+  <div class="section-wave section-wave-cream"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C360,0 1080,60 1440,20 L1440,60 L0,60 Z"/></svg></div>
+
+  <!-- FORMACION -->
+  <section id="formacion" class="section" style="background:var(--cream)">
+    <div class="reveal"><p class="section-eyebrow">Teacher Training</p><h2 class="section-title">Formación <em>Profesional</em></h2><p class="section-desc">Dos programas con certificación internacional. Presencial en Gualeguaychú y online vía Zoom.</p></div>
+    <div class="divider-animated reveal"></div>
+    <div class="formacion-cards">
+      <div class="formacion-card reveal"><p class="formacion-badge">TTC Ashtanga Yoga</p><div class="hours-counter"><span class="count-num" data-target="300">0</span><span style="font-size:.4em;color:var(--ink-muted);margin-left:4px">hs</span></div><p class="hours-label">Horas de formación</p><h3>Instructorado en <em>Ashtanga Yoga</em></h3><div class="formacion-meta"><span>⏱ 1 año · Mar a Dic</span><span>◉ 10 encuentros</span></div><p>Programa completo en la tradición del Ashtanga Yoga. 1ra Serie (Yoga Chikitsa), 2da Serie (Nadi Sodhana), práctica Mysore, ajustes, biomecánica, filosofía y meditación.</p><ul class="formacion-topics"><li>Posturas de la 1ra Serie · Yoga Chikitsa</li><li>Ajustes, alineación y biomecánica</li><li>Pranayama · Técnicas de respiración</li><li>Filosofía · Yoga Sutras, Bhagavad Gita</li><li>Práctica Mysore y metodología</li><li>Anatomía descriptiva y bio-energética</li></ul><p class="formacion-price">U$S 100 / mes · 10 cuotas</p><p class="formacion-price-note">Matrícula: U$S 50. Incluye material, manual y 2 clases semanales. Req: 2 meses de práctica.</p><a href="#contacto" class="btn-primary"><span>Solicitar entrevista</span><div class="btn-fill"></div></a><div class="cert-logos"><span>World Yoga Federation</span><span>·</span><span>Yoga Alliance Int.</span><span>·</span><span>Sachidananda Yoga Shala Mysore</span></div></div>
+      <div class="formacion-card reveal reveal-delay-1"><p class="formacion-badge">TTC Yoga Dinámico</p><div class="hours-counter"><span class="count-num" data-target="200">0</span><span style="font-size:.4em;color:var(--ink-muted);margin-left:4px">hs</span></div><p class="hours-label">Horas de formación</p><h3>Instructorado en <em>Yoga Dinámico</em></h3><div class="formacion-meta"><span>⏱ 1 año · Mar a Dic</span><span>◉ 10 encuentros</span></div><p>Vinyasa Flow para todo tipo de personas. Series de posturas adaptadas y creativas. No requiere experiencia previa.</p><ul class="formacion-topics"><li>Posturas principales en Yoga Dinámico</li><li>Alineación y biomecánica aplicada</li><li>Clases por áreas del cuerpo</li><li>Pranayama · Respiración consciente</li><li>Calma mental y concentración</li><li>Depuración y limpieza yogui</li></ul><p class="formacion-price">U$S 80 / mes · 10 cuotas</p><p class="formacion-price-note">Matrícula: U$S 50. Incluye material y manual. Sin experiencia previa. Clases en Shala aparte.</p><a href="#contacto" class="btn-primary"><span>Solicitar entrevista</span><div class="btn-fill"></div></a><div class="cert-logos"><span>World Yoga Federation</span><span>·</span><span>Yoga Alliance Int.</span><span>·</span><span>Sachidananda Yoga Shala Mysore</span></div></div>
+    </div>
+  </section>
+
+  <!-- WAVE: cream to ink -->
+  <div class="section-wave section-wave-ink"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C720,70 1080,10 1440,40 L1440,60 L0,60 Z"/></svg></div>
+
+  <!-- FOUNDER -->
+  <section id="founder" class="section">
+    <div class="founder-grid">
+      <div class="founder-image-wrap reveal" id="founderImg">
+        <img class="founder-parallax-img" id="parallaxImg" src="assets/images/kike-fay-founder.jpeg" alt="Kike Fay" />
+        <div class="founder-image-overlay"></div>
+        <div class="founder-image-accent"></div>
+      </div>
+      <div>
+        <div class="reveal"><p class="section-eyebrow">Founder & Director</p><h2 class="section-title">Kike <em>Fay</em></h2><div class="divider-animated" style="background:rgba(255,255,255,.1)"></div></div>
+        <p class="founder-text reveal reveal-delay-1">Fundador de IndoYoga, escuela de prácticas y formación en Ashtanga Yoga en Argentina. Más de una década dedicado a la enseñanza y transmisión de la tradición del Ashtanga Yoga.</p>
+        <p class="founder-text reveal reveal-delay-2">En 2017 viajó a Mysore, India, donde practicó bajo la guía de Sharaswatih, hija de Sri K. Pattabhi Jois, en el Instituto KPJYI. Desde 2018 dirige formaciones de Instructorados TTC 300hs y Profesorados TTC 500hs.</p>
+        <div class="founder-creds">
+          <div class="founder-cred">Profesor Master Level 500Hs — World Yoga Federation</div>
+          <div class="founder-cred">Training Level 500Hs — Yoga Alliance International</div>
+          <div class="founder-cred">Certificado por Sachidananda Ashtanga Yoga Shala, Mysore, India</div>
+          <div class="founder-cred">Instructor AshtangaBaires desde 2013 — 200Hs y 500Hs</div>
+          <div class="founder-cred">Hatha Yoga, Biomecánica y Filosofía avanzada</div>
+        </div>
+        <div class="founder-book"><p>Autor de "Ashtanga Yoga Para Sí Mismo" — Ed. Autores de Argentina, 2015</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-wave section-wave-ivory"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,10 1440,40 L1440,60 L0,60 Z"/></svg></div>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section">
+    <div class="reveal"><p class="section-eyebrow">Conectar</p><h2 class="section-title">Contacto</h2><p class="section-desc">Escribinos para reservar tu clase de prueba, solicitar entrevista para formación, o conocer más.</p></div>
+    <div class="divider-animated reveal"></div>
+    <div class="contacto-grid">
+      <div class="contacto-info">
+        <div class="contacto-item"><p class="contacto-item-label">WhatsApp — Kike</p><a href="https://wa.me/543446546367" target="_blank">+54 344 654 6367</a></div>
+        <div class="contacto-item"><p class="contacto-item-label">WhatsApp — Gerva</p><a href="https://wa.me/543446659406" target="_blank">+54 344 665 9406</a></div>
+        <div class="contacto-item"><p class="contacto-item-label">Email</p><a href="mailto:kikefay@gmail.com">kikefay@gmail.com</a></div>
+        <div class="contacto-item"><p class="contacto-item-label">Instagram</p><a href="https://www.instagram.com/indoyoga" target="_blank">@indoyoga</a></div>
+      </div>
+      <div class="contacto-map reveal">
+        <div class="map-pin"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h4>IndoYoga Shala</h4>
+        <p>Belgrano 161<br>Gualeguaychú, Entre Ríos<br>Argentina</p>
+      </div>
+    </div>
+  </section>
+
+  </div></div><!-- end smooth-wrapper -->
+
+  <footer id="siteFooter">
+    <span class="footer-logo">IndoYoga</span>
+    <span>Ashtanga Yoga · Gualeguaychú, Entre Ríos</span>
+    <a href="https://www.instagram.com/indoyoga" target="_blank">Instagram</a>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
