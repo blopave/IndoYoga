@@ -4,6 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IndoYoga — Ashtanga Yoga · Gualeguaychú</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IndoYoga — Ashtanga Yoga · Gualeguaychú">
+  <meta property="og:description" content="Escuela de Ashtanga Yoga fundada por Kike Fay. Clases grupales, práctica Mysore y formación de instructores con certificación internacional.">
+  <meta property="og:image" content="assets/images/kike-fay-founder.jpeg">
+  <meta property="og:locale" content="es_AR">
+  <link rel="canonical" href="https://indoyoga.com.ar">
+  <meta name="description" content="Escuela de Ashtanga Yoga fundada por Kike Fay en Gualeguaychú. Clases grupales, práctica Mysore y formación de instructores con certificación internacional.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='23' fill='none' stroke='%23b8704a' stroke-width='1.5'/%3E%3Ctext x='24' y='30' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='400' fill='%23b8704a'%3EIY%3C/text%3E%3C/svg%3E">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -11,10 +24,14 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- LOADER -->
   <div class="loader" id="loader">
     <p class="loader-text">Indo<em>Yoga</em></p>
-    <div class="loader-bar"></div>
+    <div class="loader-bar" id="loaderBar"></div>
+    <p class="loader-hint">Cargando experiencia...</p>
   </div>
   <!-- GRAIN -->
   <div class="grain"></div>
@@ -30,12 +47,13 @@
     <ul class="nav-links">
       <li><a href="#clases">Clases<span class="nav-link-line"></span></a></li>
       <li><a href="#formacion">Formación<span class="nav-link-line"></span></a></li>
-      <li><a href="#founder">Founder<span class="nav-link-line"></span></a></li>
+      <li><a href="#founder">Fundador<span class="nav-link-line"></span></a></li>
+      <li><a href="#galeria">Galería<span class="nav-link-line"></span></a></li>
       <li><a href="#contacto">Contacto<span class="nav-link-line"></span></a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
   </nav>
-  <div class="mobile-menu" id="mobileMenu"><a href="#clases" onclick="closeMenu()">Clases</a><a href="#formacion" onclick="closeMenu()">Formación</a><a href="#founder" onclick="closeMenu()">Founder</a><a href="#contacto" onclick="closeMenu()">Contacto</a></div>
+  <div class="mobile-menu" id="mobileMenu"><a href="#clases">Clases</a><a href="#formacion">Formación</a><a href="#founder">Fundador</a><a href="#galeria">Galería</a><a href="#contacto">Contacto</a></div>
 
   <div id="smooth-wrapper"><div id="smooth-content">
   <!-- HERO -->
@@ -89,7 +107,7 @@
       </div>
     </div>
     <div class="clases-grid">
-      <div class="horarios-card reveal reveal-delay-1"><p class="card-label">Horarios — Febrero 2026</p><table><thead><tr><th>Hora</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th></tr></thead><tbody>
+      <div class="horarios-card reveal reveal-delay-1"><p class="card-label">Horarios — Marzo 2026</p><table><thead><tr><th>Hora</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th></tr></thead><tbody>
         <tr class="table-row-reveal"><td>17:30</td><td><span class="style-tag">Guiada / Flow</span><span class="instructor-tag">Kike</span></td><td>—</td><td><span class="style-tag">Guiada / Flow</span><span class="instructor-tag">Kike</span></td><td>—</td></tr>
         <tr class="table-row-reveal"><td>19:00</td><td>—</td><td><span class="style-tag">Ashtanga / Flow</span><span class="instructor-tag">Kike</span></td><td>—</td><td><span class="style-tag">Ashtanga / Flow</span><span class="instructor-tag">Kike</span></td></tr>
         <tr class="table-row-reveal"><td>20:30</td><td><span class="style-tag">Ashtanga / Flow</span><span class="instructor-tag">Gerva</span></td><td><span class="style-tag">Ashtanga Mysore</span><span class="instructor-tag">Kike</span></td><td><span class="style-tag">Ashtanga / Flow</span><span class="instructor-tag">Gerva</span></td><td><span class="style-tag">Ashtanga Mysore</span><span class="instructor-tag">Kike</span></td></tr>
@@ -133,12 +151,12 @@
   <section id="founder" class="section">
     <div class="founder-grid">
       <div class="founder-image-wrap reveal" id="founderImg">
-        <img class="founder-parallax-img" id="parallaxImg" src="assets/images/kike-fay-founder.jpeg" alt="Kike Fay" />
+        <img class="founder-parallax-img" id="parallaxImg" src="assets/images/kike-fay-founder.jpeg" alt="Kike Fay" loading="lazy" />
         <div class="founder-image-overlay"></div>
         <div class="founder-image-accent"></div>
       </div>
       <div>
-        <div class="reveal"><p class="section-eyebrow">Founder & Director</p><h2 class="section-title">Kike <em>Fay</em></h2><div class="divider-animated" style="background:rgba(255,255,255,.1)"></div></div>
+        <div class="reveal"><p class="section-eyebrow">Fundador & Director</p><h2 class="section-title">Kike <em>Fay</em></h2><div class="divider-animated" style="background:rgba(255,255,255,.1)"></div></div>
         <p class="founder-text reveal reveal-delay-1">Fundador de IndoYoga, escuela de prácticas y formación en Ashtanga Yoga en Argentina. Más de una década dedicado a la enseñanza y transmisión de la tradición del Ashtanga Yoga.</p>
         <p class="founder-text reveal reveal-delay-2">En 2017 viajó a Mysore, India, donde practicó bajo la guía de Sharaswatih, hija de Sri K. Pattabhi Jois, en el Instituto KPJYI. Desde 2018 dirige formaciones de Instructorados TTC 300hs y Profesorados TTC 500hs.</p>
         <div class="founder-creds">
@@ -155,12 +173,90 @@
 
   <div class="section-wave section-wave-ivory"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,10 1440,40 L1440,60 L0,60 Z"/></svg></div>
 
+  <!-- GALERÍA -->
+  <section id="galeria" class="section">
+    <div class="reveal"><p class="section-eyebrow">Galería</p><h2 class="section-title">Práctica <em>Viva</em></h2><p class="section-desc">Momentos de práctica, formación y comunidad en nuestra shala.</p></div>
+    <div class="divider-animated reveal"></div>
+    <div class="gallery-track" id="galleryTrack">
+      <div class="gallery-item" data-video="assets/gallery/videos/video-1.mp4">
+        <video src="assets/gallery/videos/video-1.mp4" poster="assets/gallery/posters/video-1.jpg" muted playsinline preload="none"></video>
+        <div class="gallery-item-overlay"><svg class="gallery-play-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></div>
+      </div>
+      <div class="gallery-item" data-video="assets/gallery/videos/video-2.mp4">
+        <video src="assets/gallery/videos/video-2.mp4" poster="assets/gallery/posters/video-2.jpg" muted playsinline preload="none"></video>
+        <div class="gallery-item-overlay"><svg class="gallery-play-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></div>
+      </div>
+      <div class="gallery-item" data-video="assets/gallery/videos/video-3.mp4">
+        <video src="assets/gallery/videos/video-3.mp4" poster="assets/gallery/posters/video-3.jpg" muted playsinline preload="none"></video>
+        <div class="gallery-item-overlay"><svg class="gallery-play-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></div>
+      </div>
+      <div class="gallery-item" data-video="assets/gallery/videos/video-4.mp4">
+        <video src="assets/gallery/videos/video-4.mp4" poster="assets/gallery/posters/video-4.jpg" muted playsinline preload="none"></video>
+        <div class="gallery-item-overlay"><svg class="gallery-play-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></div>
+      </div>
+      <div class="gallery-item" data-video="assets/gallery/videos/video-5.mp4">
+        <video src="assets/gallery/videos/video-5.mp4" poster="assets/gallery/posters/video-5.jpg" muted playsinline preload="none"></video>
+        <div class="gallery-item-overlay"><svg class="gallery-play-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></div>
+      </div>
+      <div class="gallery-item" data-video="assets/gallery/videos/video-6.mp4">
+        <video src="assets/gallery/videos/video-6.mp4" poster="assets/gallery/posters/video-6.jpg" muted playsinline preload="none"></video>
+        <div class="gallery-item-overlay"><svg class="gallery-play-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></div>
+      </div>
+      <div class="gallery-item" data-video="assets/gallery/videos/video-7.mp4">
+        <video src="assets/gallery/videos/video-7.mp4" poster="assets/gallery/posters/video-7.jpg" muted playsinline preload="none"></video>
+        <div class="gallery-item-overlay"><svg class="gallery-play-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/></svg></div>
+      </div>
+    </div>
+    <div class="gallery-nav reveal">
+      <button class="gallery-arrow gallery-arrow-left" id="galleryLeft" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="gallery-counter" id="galleryCounter">4 / 7</span>
+      <div class="gallery-dots" id="galleryDots"></div>
+      <button class="gallery-arrow gallery-arrow-right" id="galleryRight" aria-label="Siguiente">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="gallery-cta reveal">
+      <p class="gallery-cta-text">Viví la experiencia en la shala</p>
+      <a href="#contacto" class="btn-primary"><span>Reservá tu clase de prueba</span><div class="btn-fill"></div></a>
+    </div>
+  </section>
+
+  <!-- Video Lightbox -->
+  <div class="gallery-lightbox" id="galleryLightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <video class="lightbox-video" id="lightboxVideo" controls playsinline></video>
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <div class="section-wave section-wave-ink"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,60 1080,10 1440,40 L1440,60 L0,60 Z"/></svg></div>
+  <section class="testimonios-section">
+    <div class="reveal"><p class="section-eyebrow" style="color:var(--terracotta-light)">Comunidad</p><h2 class="section-title" style="color:var(--ivory)">Lo que dicen nuestros <em>alumnos</em></h2></div>
+    <div class="testimonios-track" id="testimoniosTrack">
+      <div class="testimonio-card reveal">
+        <p class="testimonio-text">"Empecé sin saber nada de yoga y hoy no puedo imaginar mi semana sin la práctica. El ambiente de la shala es único, Kike transmite una calma y dedicación que se siente desde el primer día."</p>
+        <div class="testimonio-author"><span class="testimonio-name">María L.</span><span class="testimonio-role">Alumna desde 2023</span></div>
+      </div>
+      <div class="testimonio-card reveal reveal-delay-1">
+        <p class="testimonio-text">"La formación TTC cambió mi vida. No solo aprendí a enseñar yoga, sino que descubrí una filosofía que aplico todos los días. La certificación internacional fue un plus enorme."</p>
+        <div class="testimonio-author"><span class="testimonio-name">Lucas T.</span><span class="testimonio-role">Egresado TTC 300hs</span></div>
+      </div>
+      <div class="testimonio-card reveal reveal-delay-2">
+        <p class="testimonio-text">"Lo que más valoro es la práctica Mysore. Poder avanzar a mi ritmo con la guía personalizada de Kike es invaluable. Cada clase es diferente y siempre salgo renovada."</p>
+        <div class="testimonio-author"><span class="testimonio-name">Carolina S.</span><span class="testimonio-role">Alumna Mysore</span></div>
+      </div>
+    </div>
+  </section>
+  <div class="section-wave section-wave-ivory"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60 Z"/></svg></div>
+
   <!-- CONTACTO -->
   <section id="contacto" class="section">
     <div class="reveal"><p class="section-eyebrow">Conectar</p><h2 class="section-title">Contacto</h2><p class="section-desc">Escribinos para reservar tu clase de prueba, solicitar entrevista para formación, o conocer más.</p></div>
     <div class="divider-animated reveal"></div>
     <div class="contacto-new-grid">
-      <!-- QR Cards -->
       <div class="contacto-qr-cards">
         <div class="qr-card reveal">
           <div class="qr-card-header">
@@ -193,27 +289,26 @@
           <a href="https://www.instagram.com/indoyogaom" target="_blank" class="qr-mobile-btn">Abrir Instagram</a>
         </div>
       </div>
-      <!-- Email -->
       <div class="contacto-email reveal">
         <p class="contacto-item-label">Email</p>
         <a href="mailto:kikefay@gmail.com">kikefay@gmail.com</a>
       </div>
-      <!-- Location -->
       <div class="contacto-location reveal">
         <div class="location-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <h4 class="location-name">IndoYoga Shala</h4>
         <p class="location-address">Belgrano 161<br>Gualeguaychú · Entre Ríos · Argentina</p>
-        <a href="https://www.google.com/maps/search/Belgrano+161+Gualeguaychú+Entre+Ríos+Argentina" target="_blank" class="btn-primary btn-map"><span>Cómo llegar</span><div class="btn-fill"></div></a>
+        <a href="https://www.google.com/maps/place/Belgrano+161,+Gualeguaychú,+Entre+Ríos,+Argentina/@-33.0094,-58.5172,17z" target="_blank" class="btn-primary btn-map"><span>Cómo llegar</span><div class="btn-fill"></div></a>
       </div>
     </div>
   </section>
 
-  <!-- NAMASTÉ -->
+  <!-- NAMASTÉ + FOOTER FLOW (all dark, seamless) -->
+  <div class="section-wave section-wave-ink"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,10 1440,40 L1440,60 L0,60 Z"/></svg></div>
   <section class="namaste-section">
     <div class="namaste-img-wrap reveal">
-      <img src="assets/images/kike-mayurasana.jpeg" alt="Kike Fay — Mayurasana" class="namaste-img" />
+      <img src="assets/images/kike-mayurasana.jpeg" alt="Kike Fay — Mayurasana" class="namaste-img" loading="lazy" />
       <div class="namaste-img-gradient"></div>
     </div>
     <div class="namaste-text reveal">Namasté</div>
@@ -222,9 +317,38 @@
 
   </div></div><!-- end smooth-wrapper -->
 
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/543446546367" target="_blank" class="whatsapp-float" id="whatsappFloat" aria-label="WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
   <footer id="siteFooter">
-    <span class="footer-logo">IndoYoga</span>
-    <span>Ashtanga Yoga · Gualeguaychú, Entre Ríos</span>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <span class="footer-logo">Indo<em>Yoga</em></span>
+        <p class="footer-tagline">Escuela de Ashtanga Yoga fundada por Kike Fay en Gualeguaychú, Entre Ríos.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Navegación</p>
+        <a href="#clases">Clases</a>
+        <a href="#formacion">Formación</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Redes</p>
+        <a href="https://www.instagram.com/indoyogaom" target="_blank">Instagram</a>
+        <a href="https://wa.me/543446546367" target="_blank">WhatsApp</a>
+        <a href="mailto:kikefay@gmail.com">Email</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Ubicación</p>
+        <p class="footer-address">Belgrano 161<br>Gualeguaychú<br>Entre Ríos, Argentina</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 IndoYoga. Todos los derechos reservados.</span>
+    </div>
   </footer>
   <script src="js/main.js"></script>
 </body>
