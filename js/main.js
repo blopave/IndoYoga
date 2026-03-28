@@ -142,56 +142,40 @@
     const lightboxClose=document.getElementById('lightboxClose');
     let activeIndex=Math.floor(galleryItems.length/2);
 
-    // Position items centered around active
-    function positionGallery(animate){
+    // Position items centered around active using CSS classes
+    function updateCarousel(){
       if(!galleryTrack||!galleryItems.length)return;
-      const trackW=galleryTrack.offsetWidth;
-      const itemW=galleryItems[0].offsetWidth;
-      const gap=20;
-      // Center offset for the active item
-      const centerOffset=(trackW-itemW)/2;
+      const total=galleryItems.length;
       galleryItems.forEach((item,i)=>{
-        const dist=Math.abs(i-activeIndex);
-        const x=centerOffset+(i-activeIndex)*(itemW+gap);
-        const s=i===activeIndex?1:dist===1?.82:.75;
-        item.style.transition=animate?'all .6s cubic-bezier(.16,1,.3,1)':'none';
-        item.style.transform='translateX('+x+'px) scale('+s+')';
-        item.style.left='0';
-        item.style.position='absolute';
-        item.classList.toggle('active',i===activeIndex);
-        item.classList.toggle('near',dist===1);
+        item.classList.remove('is-active','is-prev','is-next','is-far-prev','is-far-next');
+        const diff=((i-activeIndex)%total+total)%total;
+        const offset=diff>total/2?diff-total:diff;
+        if(offset===0)item.classList.add('is-active');
+        else if(offset===-1)item.classList.add('is-prev');
+        else if(offset===1)item.classList.add('is-next');
+        else if(offset===-2)item.classList.add('is-far-prev');
+        else if(offset===2)item.classList.add('is-far-next');
       });
-      // Update dots
+      // Update dots & counter
       dots.forEach((d,i)=>d.classList.toggle('active',i===activeIndex));
-      // Update counter
       const counter=document.getElementById('galleryCounter');
-      if(counter)counter.textContent=(activeIndex+1)+' / '+galleryItems.length;
+      if(counter)counter.textContent=(activeIndex+1)+' / '+total;
       // Lazy load + auto-play active and adjacent videos
       galleryItems.forEach((item,i)=>{
         const vid=item.querySelector('video');
         if(!vid)return;
-        const isNear=Math.abs(i-activeIndex)<=1;
+        const isNear=Math.abs(((i-activeIndex)%total+total)%total)<=1||Math.abs(((i-activeIndex)%total+total)%total)>=total-1;
         if(isNear&&vid.preload==='none')vid.preload='metadata';
         if(i===activeIndex){vid.currentTime=0;vid.play().catch(()=>{})}
         else{vid.pause();vid.currentTime=0}
       });
     }
 
-    function goTo(idx,animate){
+    function goTo(idx){
       if(idx<0)idx=galleryItems.length-1;
       if(idx>=galleryItems.length)idx=0;
       activeIndex=idx;
-      positionGallery(animate!==false);
-    }
-
-    // Set track height based on item
-    if(galleryTrack&&galleryItems.length){
-      galleryTrack.style.position='relative';
-      galleryTrack.style.height=galleryItems[0].offsetHeight+'px';
-      window.addEventListener('resize',()=>{
-        galleryTrack.style.height=galleryItems[0].offsetHeight+'px';
-        positionGallery(false);
-      });
+      updateCarousel();
     }
 
     // Build dots
@@ -251,13 +235,19 @@
     // Click on active item opens lightbox
     galleryItems.forEach((item,i)=>{
       item.addEventListener('click',()=>{
-        if(!item.classList.contains('active')){goTo(i);return}
+        if(!item.classList.contains('is-active')){goTo(i);return}
         const src=item.dataset.video;
         if(src&&lightbox&&lightboxVideo){
           lightboxVideo.src=src;
+          lightboxVideo.load();
           lightbox.classList.add('active');
           document.body.style.overflow='hidden';
-          lightboxVideo.play();
+          lightboxVideo.addEventListener('loadeddata',function onLoaded(){
+            lightboxVideo.removeEventListener('loadeddata',onLoaded);
+            lightboxVideo.play().catch(()=>{});
+          });
+          // Fallback: try playing after short delay if loadeddata doesn't fire
+          setTimeout(()=>{lightboxVideo.play().catch(()=>{})},300);
           pauseAutoRotate();
         }
       });
@@ -266,7 +256,8 @@
       if(lightbox&&lightboxVideo){
         lightbox.classList.remove('active');
         lightboxVideo.pause();
-        lightboxVideo.src='';
+        lightboxVideo.removeAttribute('src');
+        lightboxVideo.load();
         document.body.style.overflow='';
         resumeAutoRotate();
       }
@@ -277,8 +268,7 @@
     // Init gallery on reveal
     if(galleryTrack){
       const gObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){
-        positionGallery(false);
-        setTimeout(()=>positionGallery(true),50);
+        updateCarousel();
         gObs.unobserve(e.target);
       }})},{threshold:.1});
       gObs.observe(galleryTrack);
