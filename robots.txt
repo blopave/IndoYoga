@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://indoyoga.com.ar/sitemap.xml
