@@ -342,9 +342,9 @@
         submitLabel.textContent='Enviando...';
         try{
           const data=new FormData(form);
-          const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});
+          const res=await fetch('https://formsubmit.co/ajax/kikefay@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:data});
           const json=await res.json();
-          if(json.success){
+          if(json.success==='true'||json.success===true){
             form.hidden=true;
             successEl.hidden=false;
             if(pendingPdf){
