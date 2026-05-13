@@ -299,3 +299,68 @@
       })},{threshold:0});
       wO.observe(w);
     });
+
+    // === DOWNLOAD INFO MODAL (lead capture via Web3Forms) ===
+    (function(){
+      const modal=document.getElementById('dlModal');
+      if(!modal)return;
+      const form=document.getElementById('dlModalForm');
+      const programLabel=document.getElementById('dlModalProgram');
+      const programInput=document.getElementById('dlModalProgramaInput');
+      const errorEl=document.getElementById('dlModalError');
+      const successEl=document.getElementById('dlModalSuccess');
+      const submitBtn=form.querySelector('.dl-submit');
+      const submitLabel=submitBtn.querySelector('.dl-submit__label');
+      let pendingPdf=null;
+      function openModal(program,pdf){
+        pendingPdf=pdf;
+        programLabel.textContent=program;
+        programInput.value=program;
+        errorEl.hidden=true;
+        successEl.hidden=true;
+        form.hidden=false;
+        form.reset();
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        setTimeout(()=>form.querySelector('input[name="nombre"]').focus(),300);
+      }
+      function closeModal(){
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow='';
+      }
+      document.querySelectorAll('.download-info-link').forEach(btn=>{
+        btn.addEventListener('click',()=>openModal(btn.dataset.program||'',btn.dataset.pdf||''));
+      });
+      modal.querySelectorAll('[data-dl-close]').forEach(el=>el.addEventListener('click',closeModal));
+      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('active'))closeModal()});
+      form.addEventListener('submit',async e=>{
+        e.preventDefault();
+        errorEl.hidden=true;
+        submitBtn.disabled=true;
+        submitLabel.textContent='Enviando...';
+        try{
+          const data=new FormData(form);
+          const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});
+          const json=await res.json();
+          if(json.success){
+            form.hidden=true;
+            successEl.hidden=false;
+            if(pendingPdf){
+              const a=document.createElement('a');
+              a.href=pendingPdf;a.download='';
+              document.body.appendChild(a);a.click();a.remove();
+            }
+            setTimeout(closeModal,2200);
+          }else{
+            errorEl.hidden=false;
+          }
+        }catch(err){
+          errorEl.hidden=false;
+        }finally{
+          submitBtn.disabled=false;
+          submitLabel.textContent='Descargar PDF';
+        }
+      });
+    })();
