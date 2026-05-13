@@ -330,8 +330,16 @@
         modal.setAttribute('aria-hidden','true');
         document.body.style.overflow='';
       }
+      // Lead capture desactivado temporalmente: descarga directa del PDF.
+      // Para reactivar el modal, reemplazar el handler por: openModal(btn.dataset.program||'', btn.dataset.pdf||'')
       document.querySelectorAll('.download-info-link').forEach(btn=>{
-        btn.addEventListener('click',()=>openModal(btn.dataset.program||'',btn.dataset.pdf||''));
+        btn.addEventListener('click',()=>{
+          const pdf=btn.dataset.pdf;
+          if(!pdf)return;
+          const a=document.createElement('a');
+          a.href=pdf;a.download='';
+          document.body.appendChild(a);a.click();a.remove();
+        });
       });
       modal.querySelectorAll('[data-dl-close]').forEach(el=>el.addEventListener('click',closeModal));
       document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('active'))closeModal()});
